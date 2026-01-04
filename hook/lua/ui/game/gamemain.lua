@@ -11,8 +11,8 @@ if ExistGlobal "UMT" and UMT.Version >= 11 then
 
         LOG("[FA_Metrics_Exporter] Loaded")
 
-        module = import('/mods/fa-live-metrics/modules/exporter.lua')
-        state = import('/mods/fa-live-metrics/modules/exporter_state.lua')
+        module = import('/mods/LiveMetrics/modules/exporter.lua')
+        state = import('/mods/LiveMetrics/modules/exporter_state.lua')
         module.MapInfoExport()
 
         ForkThread(function()

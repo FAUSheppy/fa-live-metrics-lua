@@ -1,10 +1,10 @@
 function DisableFAMetrics()
-    local state = import('/mods/fa-live-metrics/modules/exporter_state.lua')
+    local state = import('/mods/LiveMetrics/modules/exporter_state.lua')
     state.Disable()
 end
 
 function ToggleFAMetrics()
-    local state = import('/mods/fa-live-metrics/modules/exporter_state.lua')
+    local state = import('/mods/LiveMetrics/modules/exporter_state.lua')
     state.Toggle()
     local toggleInfo = {text = "Toggeled FA Metrics disabled=" .. tostring(state.GetDisabledState()), size = 20, color = 'FFF0AAAA', duration = 1, location = 'center'}
     import('/lua/ui/game/textdisplay.lua').PrintToScreen(toggleInfo)

@@ -1,4 +1,4 @@
-local json = import('/mods/fa-live-metrics/modules/json.lua')
+local json = import('/mods/LiveMetrics/modules/json.lua')
 
 local positionMarkers = import("/lua/ui/game/worldview.lua").positionMarkers
 local EnhancementQueueFile = import("/lua/ui/notify/enhancementqueue.lua")
