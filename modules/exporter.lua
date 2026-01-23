@@ -107,6 +107,7 @@ local function ProcessAllUnits()
 
         local entityId = unit:GetEntityId()
         local factoryQueue = SetCurrentFactoryForQueueDisplay(unit)
+        local commandQueue = unit:GetCommandQueue()
         local enhancementQueue = EnhancementQueueFile.getEnhancementQueue()[entityId]
         
         --local reclaim = import('/lua/ui/game/reclaim.lua').reclaimDataPool 
@@ -123,10 +124,12 @@ local function ProcessAllUnits()
             ["maxHealth"]    = unit:GetMaxHealth(),
             ["currentHealth"]= string.format("%.0f", unit:GetHealth()),
             ["percentShield"]= unit:GetShieldRatio(),
+            ["isPaused"]     = GetIsPaused({unit}),
             ["isIdle"]       = unit:IsIdle(),
             ["veterancy"]    = unit:GetStat("VetExperience", 0).Value,
             ["unitName"]     = unit:GetStat("UnitName", "no_unit_name").Value,
             ["factoryQueue"] = factoryQueue,
+            ["commandQueue"] = commandQueue,
             ["enhancementQueue"] = enhancementQueue,
             ["isRepeatQueue"] = unit:IsRepeatQueue()
         })
