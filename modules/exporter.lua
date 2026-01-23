@@ -142,10 +142,17 @@ end
 local function BuildPayload()
     
     local econData = CollectEconomy()
+
+    local camera = GetCamera("WorldCamera")
+    local zoomRaw = camera:GetZoom()
+    -- fully zoome out is approx zoomRaw/mapSizeY = 125-130, anything above 100 views the entire map
+    local zoomNormalized = math.floor(zoomRaw/sessionInfo.size[1])
+
     return {
         time = GetGameTimeSeconds(),
         economy = econData,
         playerUnits = ProcessAllUnits(),
+        cameraZoom = zoomNormalized,
         -- armiesTable = GetArmiesTable().armiesTable,
         -- visibleEnemies = CollectVisibleEnemies(),
     }
