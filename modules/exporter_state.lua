@@ -27,10 +27,16 @@ function PrintWarningIfHotkeyNotSet()
     for key, value in pairs(kmap) do
         LOG("[FA_Metrics_Exporter] Debug: " .. key .. " v: " .. value)
         if match[value] then
-            msg = "Hotkey to disable FA_Metrics if UI lags is: " .. key
+            msg = ""
         end
     end
 
-    local data1 = {text = msg, size = 20, color = 'ffffffff', duration = 5, location = 'center'}
-    textDisplay.PrintToScreen(data1)
+    if msg == "" then
+        local data1 = {text = msg, size = 20, color = 'ffffffff', duration = 5, location = 'center'}
+        textDisplay.PrintToScreen(data1)
+    end
+end
+
+function printWarningIngame(string)
+    textDisplay.PrintToScreen({text = string, size = 20, color = 'ffffffff', duration = 5, location = 'center'})
 end

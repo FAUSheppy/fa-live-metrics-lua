@@ -9,8 +9,15 @@ author = "Sheppy"
 icon = "/mods/LiveMetrics/mod_icon.png"
 url = "https://github.com/FAUSheppy/fa-live-metrics-lua"
 uid = "fa-metrics-exporter-02-sheppy"
+
 conflicts = {
     "fa-metrics-exporter-01-sheppy",
+}
+requires = {
+    "ui-mod-tools-4z0t-v13"
+}
+requiresNames = {
+    ["ui-mod-tools-4z0t-v13"] = "UI Mod Tools >= Version 13"
 }
 exclusive = false
 ui_only = true
