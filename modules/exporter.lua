@@ -21,25 +21,6 @@ local function GetFactoryForQueueDisplay()
     return factory
 end
 
-function ExportReclaimToLog()
-    if not _G.MyReclaimExport then
-        WARN("No reclaim data available")
-        return
-    end
-
-    for id, data in _G.MyReclaimExport.Reclaim do
-        LOG(string.format(
-            "RECLAIM id=%d mass=%.1f energy=%.1f pos=(%.1f %.1f %.1f)",
-            id,
-            data.mass,
-            data.energy,
-            data.pos[1],
-            data.pos[2],
-            data.pos[3]
-        ))
-    end
-end
-
 local function CollectEconomy()
 
     local econ = GetEconomyTotals()
@@ -144,18 +125,21 @@ end
 
 local function BuildPayload()
     
+    
+    local sessionInfo = SessionGetScenarioInfo()
     local econData = CollectEconomy()
 
     local camera = GetCamera("WorldCamera")
     local zoomRaw = camera:GetZoom()
     -- fully zoome out is approx zoomRaw/mapSizeY = 125-130, anything above 100 views the entire map
-    local zoomNormalized = math.floor(zoomRaw/sessionInfo.size[1])
+    local zoomNormalized = math.floor(zoomRaw*100/sessionInfo.size[1])
 
     return {
         time = GetGameTimeSeconds(),
         economy = econData,
         playerUnits = ProcessAllUnits(),
         cameraZoom = zoomNormalized,
+        armyId = GetFocusArmy(),
         -- armiesTable = GetArmiesTable().armiesTable,
         -- visibleEnemies = CollectVisibleEnemies(),
     }
@@ -163,7 +147,6 @@ end
 
 function TickExporter()
     local data = BuildPayload()
-    -- ExportReclaimToLog()
     LOG("[FA_METRICS] JSON: " .. json.encode(data))
 end
 
@@ -177,7 +160,8 @@ function MapInfoExport()
         ratings = sessionInfo.Options.Ratings,
         isUnranked = sessionInfo.Options.Unranked,
         armiesTable = GetArmiesTable().armiesTable,
-        submitterArmyId = GetFocusArmy()
+        submitterArmyId = GetFocusArmy(),
+        modVersion = 5,
     }
     LOG("[FA_METRICS] JSON: " .. json.encode(map_data))
     -- LOG("[FA_METRICS] JSON: " .. json.encode(sessionInfo))
