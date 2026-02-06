@@ -94,11 +94,20 @@ local function ProcessAllUnits()
         --local reclaim = import('/lua/ui/game/reclaim.lua').reclaimDataPool 
         --LOG("[FA_METRICS] reclaim fields: " .. json.encode(reclaim))
 
+        local focus = unit:GetFocus()
+        local focusEntityId = nil
+        if focus ~= nil then
+            focusEntityId = focus:GetEntityId()
+        end
+
+        -- LOG("[FA_METRICS] unit:GetFocus(): " .. tostring(entityId) .. "->" .. json.encode(focusEntityId))
+
         table.insert(result, {
             ["entityId"]     = entityId,
             ["army"]         = unit:GetArmy(),
             ["unitId"]       = unit:GetUnitId(),
             ["percentBuilt"] = unit:GetFractionComplete(),
+            ["unitFocus"]    = focusEntityId,
             ["x-pos"]        = string.format("%.3f", unit:GetPosition().x),
             ["y-pos"]        = string.format("%.3f", unit:GetPosition().y),
             ["z-pos"]        = string.format("%.3f", unit:GetPosition().z),
