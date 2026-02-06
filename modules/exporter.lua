@@ -170,7 +170,7 @@ function MapInfoExport()
         isUnranked = sessionInfo.Options.Unranked,
         armiesTable = GetArmiesTable().armiesTable,
         submitterArmyId = GetFocusArmy(),
-        modVersion = 5,
+        modVersion = 6,
     }
     LOG("[FA_METRICS] JSON: " .. json.encode(map_data))
     -- LOG("[FA_METRICS] JSON: " .. json.encode(sessionInfo))

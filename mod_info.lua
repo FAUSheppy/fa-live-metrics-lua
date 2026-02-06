@@ -8,8 +8,9 @@ You add a Hotkey via F1 to toggel the mod, because it can lag the UI if your PC 
 author = "Sheppy"
 icon = "/mods/LiveMetrics/mod_icon.png"
 url = "https://github.com/FAUSheppy/fa-live-metrics-lua"
-uid = "fa-metrics-exporter-05-sheppy"
+uid = "fa-metrics-exporter-06-sheppy"
 conflicts = {
+    "fa-metrics-exporter-05-sheppy",
     "fa-metrics-exporter-04-sheppy",
     "fa-metrics-exporter-03-sheppy",
     "fa-metrics-exporter-02-sheppy",
