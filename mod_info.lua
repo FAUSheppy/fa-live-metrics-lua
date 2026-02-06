@@ -1,5 +1,5 @@
 name = "FA_Metrics_Exporter"
-version = 5
+version = 6
 copyright = "GPLv3"
 description = [[Export live Metrics into the Gamelog
 Current considered in a beta state. Help is wellcome, contact me on FAF Discord.
