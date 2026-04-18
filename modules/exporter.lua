@@ -3,6 +3,8 @@ local json = import('/mods/LiveMetrics/modules/json.lua')
 local positionMarkers = import("/lua/ui/game/worldview.lua").positionMarkers
 local EnhancementQueueFile = import("/lua/ui/notify/enhancementqueue.lua")
 
+local  focusArmyReplayLock = -1
+
 local function GetFactoryForQueueDisplay()
     local selection = GetSelectedUnits()
     if not selection then return nil end
@@ -70,6 +72,7 @@ local function CollectEconomy()
 
 local GetUnits = UMT.Units.GetFast
 local function ProcessAllUnits()
+
     local allunits = GetUnits()
     local result = {}
 
@@ -156,7 +159,20 @@ end
 
 function TickExporter()
     local data = BuildPayload()
-    LOG("[FA_METRICS] JSON: " .. json.encode(data))
+
+    --  TODO: currently skip anything if it is not the inital army selected
+    if focusArmyReplayLock == -1 and GetFocusArmy() ~= -1 then
+        focusArmyReplayLock = GetFocusArmy()
+        local submitter = GetArmiesTable().armiesTable[GetFocusArmy()].nickname
+        LOG("[FA_METRICS] REPLAY_SUBMITTER_UPDATE: " .. tostring(submitter) .. "," .. tostring(GetFocusArmy()))
+    elseif focusArmyReplayLock ~= -1 and GetFocusArmy() ~= focusArmyReplayLock then
+        return
+    end
+
+    -- skip if observer in replay
+    if GetFocusArmy() ~= -1 then
+        LOG("[FA_METRICS] JSON: " .. json.encode(data))
+    end
 end
 
 function MapInfoExport()
