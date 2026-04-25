@@ -16,6 +16,13 @@ if ExistGlobal "UMT" and UMT.Version >= 11 then
         module = import('/mods/LiveMetrics/modules/exporter.lua')
         module.MapInfoExport()
 
+        -- switch army for replay recording
+        if isReplay and HasCommandLineArg("/switch-to-army") then
+            local switchTo = GetCommandLineArg("/switch-to-army", 1)[1]
+            LOG("FA_METRICS: Switch to army:" .. tostring(GetCommandLineArg("/switch-to-army", 1)[1]) .. " requested.")
+            SetFocusArmy(tonumber(switchTo))
+        end
+
         ForkThread(function()
             while true do
 

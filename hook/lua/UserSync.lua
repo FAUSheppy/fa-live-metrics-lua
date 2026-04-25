@@ -13,13 +13,6 @@ function OnSync()
             time = GetGameTimeSeconds(),
             destroyed = Sync.Events.ACUDestroyed
         }
-        LOG("WTF LOLOLOL")
-        LOG("WTF LOLOLOL")
-        LOG("WTF LOLOLOL")
-        LOG("WTF LOLOLOL")
-        LOG("WTF LOLOLOL")
-        LOG("WTF LOLOLOL")
-        LOG("WTF LOLOLOL")
         LOG("[FA_METRICS] JSON: " .. json.encode(acu_destroyed_info))
     end 
 

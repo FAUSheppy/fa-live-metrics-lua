@@ -1,5 +1,4 @@
 local KeyMapper = import('/lua/keymap/keymapper.lua')
-local textDisplay = import('/lua/ui/game/textdisplay.lua')
 local StopExporter = false
 
 function Toggle()
@@ -26,11 +25,12 @@ function PrintWarningIfHotkeyNotSet()
 
     if msg ~= "" then
         local data1 = {text = msg, size = 20, color = 'ffffffff', duration = 5, location = 'center'}
-        textDisplay.PrintToScreen(data1)
+        import('/lua/ui/game/textdisplay.lua').PrintToScreen(data1)
+        --textDisplay.PrintToScreen(data1)
     end
 end
 
 function PrintWarningIngame(string)
     local data = {text = string, size = 20, color = 'ffffffff', duration = 10, location = 'center'}
-    textDisplay.PrintToScreen(data)
+    import('/lua/ui/game/textdisplay.lua').PrintToScreen(data)
 end
