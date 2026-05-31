@@ -1,5 +1,5 @@
 name = "FA_Metrics_Exporter"
-version = 8
+version = 9
 copyright = "GPLv3"
 description = [[Export live Metrics into the Gamelog
 Current considered in a beta state. Help is wellcome, contact me on FAF Discord.
@@ -9,8 +9,9 @@ can't keep up in lategame.
 author = "Sheppy"
 icon = "/mods/LiveMetrics/mod_icon.png"
 url = "https://github.com/FAUSheppy/fa-live-metrics-lua"
-uid = "fa-metrics-exporter-08-sheppy"
+uid = "fa-metrics-exporter-09-sheppy"
 conflicts = {
+    "fa-metrics-exporter-08-sheppy",
     "fa-metrics-exporter-07-sheppy",
     "fa-metrics-exporter-06-sheppy",
     "fa-metrics-exporter-05-sheppy",
