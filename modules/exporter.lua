@@ -119,7 +119,7 @@ local function ProcessAllUnits()
             ["percentShield"]= unit:GetShieldRatio(),
             ["isPaused"]     = GetIsPaused({unit}),
             ["isMobile"]     = unit:IsInCategory(categories.MOBILE),
-            ["isCombatUnit"] = not unit:IsInCategory(categories.ENGINEER),
+            ["isMobileCombatUnit"] = not unit:IsInCategory(categories.ENGINEER) and unit:IsInCategory(categories.MOBILE),
             ["isIdle"]       = unit:IsIdle(),
             ["veterancy"]    = unit:GetStat("VetExperience", 0).Value,
             ["unitName"]     = unit:GetStat("UnitName", "no_unit_name").Value,
