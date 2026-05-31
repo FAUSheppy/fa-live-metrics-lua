@@ -115,6 +115,8 @@ local function ProcessAllUnits()
             ["currentHealth"]= string.format("%.0f", unit:GetHealth()),
             ["percentShield"]= unit:GetShieldRatio(),
             ["isPaused"]     = GetIsPaused({unit}),
+            ["isMobile"]     = unit:IsInCategory(categories.MOBILE),
+            ["isCombatUnit"] = not unit:IsInCategory(categories.ENGINEER),
             ["isIdle"]       = unit:IsIdle(),
             ["veterancy"]    = unit:GetStat("VetExperience", 0).Value,
             ["unitName"]     = unit:GetStat("UnitName", "no_unit_name").Value,
